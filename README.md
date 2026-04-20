@@ -51,6 +51,7 @@ Job listings
 Prices
 Tables
 Research data
+
 📋 Execution Logs + History
 
 Tracks each action taken by the agent with transparent logs.
@@ -64,6 +65,7 @@ AI Browser Agent
 ├── Execution Memory
 ├── Logging + History
 └── Streamlit UI
+
 🛠 Tech Stack
 Python
 Streamlit
@@ -72,6 +74,7 @@ Playwright
 Asyncio
 Logging
 Docker
+
 📂 Project Structure
 ai-browser-agent/
 │
@@ -91,31 +94,30 @@ ai-browser-agent/
 ├── Dockerfile
 ├── README.md
 └── .env.example
+
 ⚡ Installation
 1️⃣ Clone Repo
 git clone https://github.com/shivamrustagi03/autonomous-browser-agent.git
 cd autonomous-browser-agent
+
 2️⃣ Create Virtual Environment
 python -m venv venv
 Activate:
-
 Windows
-
 venv\Scripts\activate
-
 Mac/Linux
-
 source venv/bin/activate
+
 3️⃣ Install Dependencies
 pip install -r requirements.txt
 pip install -r requirements_streamlit.txt
 playwright install chromium
+
 4️⃣ Add Environment Variables
-
 Create .env
-
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-pro
+
 ▶️ Run Project
 Streamlit UI (Recommended)
 streamlit run streamlit_app.py
@@ -125,6 +127,7 @@ Then open:
 http://localhost:8501
 CLI Mode
 python -m app.main "Find top 5 AI jobs in Hyderabad"
+
 💡 Example Tasks
 Job Search
 Find top 5 AI jobs in Hyderabad on LinkedIn
@@ -135,6 +138,7 @@ Research top 3 Python web scraping libraries and compare them
 Form Filling
 Fill registration form on website using sample details
 📸 Screenshots
+
 Home UI
 
 Running Task
@@ -146,6 +150,7 @@ Build Image
 docker build -t ai-browser-agent .
 Run
 docker run --rm --env-file .env ai-browser-agent
+
 🎯 Why This Project Matters
 
 This project demonstrates production-level skills in:
@@ -170,6 +175,7 @@ Voice commands
 Scheduled automation
 Browser screenshot previews
 Cloud deployment
+
 👨‍💻 Author
 
 Shivam Rustagi
