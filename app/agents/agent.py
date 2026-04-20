@@ -3,7 +3,7 @@ import logging
 from typing import Optional
 from browser_use import Agent, ChatGoogleGenerativeAI, AgentHistoryList
 
-from app.config import Config
+from app.core.config import Config
 
 logger = logging.getLogger(__name__)
 

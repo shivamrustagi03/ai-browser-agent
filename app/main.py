@@ -4,10 +4,10 @@ import argparse
 import logging
 import sys
 
-from app.agent import BrowserAgent
-from app.config import Config
-from app.tasks import ExampleTasks, TaskTemplates
-from app.utils import setup_logging, print_history_summary
+from app.agents.agent import BrowserAgent
+from app.core.config import Config
+from app.services.tasks import ExampleTasks, TaskTemplates
+from app.utils.utils import setup_logging, print_history_summary
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -100,3 +100,16 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+
+
+def run_agent_sync(task: str, model: str = None):
+    import asyncio
+    
+    agent = BrowserAgent(model=model)
+    history = asyncio.run(agent.execute(task))
+    
+    # Try extracting clean output
+    if hasattr(history, "final_result"):
+        return history.final_result()
+    
+    return str(history)
