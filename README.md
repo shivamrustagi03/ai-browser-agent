@@ -10,7 +10,7 @@ This project combines **LLM reasoning + browser control + autonomous execution**
 
 ### Streamlit Web Interface
 
-![UI Screenshot](assets/ui-home.png)
+![UI Screenshot](app/assets/ui-home.png)
 
 > Professional interactive interface built using Streamlit for real-time task execution.
 
