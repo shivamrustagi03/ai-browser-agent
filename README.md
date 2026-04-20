@@ -1,201 +1,181 @@
-# AI Browser Agent
+# 🤖 AI Browser Agent
 
-An intelligent browser automation system powered by AI that can perform complex web tasks autonomously using natural language instructions.
+An intelligent **Agentic AI browser automation system** that performs real web tasks autonomously using natural language instructions.
 
-## Features
+This project combines **LLM reasoning + browser control + autonomous execution** to navigate websites, extract data, fill forms, and complete multi-step workflows like a human user.
 
-- **Natural Language Tasks**: Describe tasks in plain English
-- **Intelligent Navigation**: AI-powered decision making for web interactions
-- **Multi-Step Workflows**: Handle complex, multi-page automation tasks
-- **Form Filling**: Automatically fill and submit web forms
-- **Data Extraction**: Extract structured information from web pages
-- **Error Handling**: Robust error handling and recovery mechanisms
-- **Execution History**: Detailed logging and history tracking
+---
 
-## Architecture
+## 🚀 Demo UI
 
-The application follows a modular architecture:
+### Streamlit Web Interface
 
-- **Agent**: Core browser automation engine using LLM for decision making
-- **Tasks**: Reusable task templates and definitions
-- **Configuration**: Environment-based configuration management
-- **Utilities**: Helper functions for logging and history management
+![UI Screenshot](assets/ui-home.png)
 
-## Installation
+> Professional interactive interface built using Streamlit for real-time task execution.
 
-### Prerequisites
+---
 
-- Python 3.11 or higher
-- Gemini API key
+## ✨ Key Features
 
-### Setup
+### 🧠 Natural Language Commands
+Describe tasks in plain English:
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd ai-browser-agent
-```
+```text
+Find top 5 AI jobs in Hyderabad on LinkedIn
+🌐 Autonomous Browser Navigation
 
-2. Create a virtual environment:
-```bash
+AI decides:
+
+where to click
+what to search
+how to navigate pages
+how to complete tasks
+🔄 Multi-Step Workflows
+
+Supports tasks like:
+
+Search → Visit pages → Extract info
+Login → Navigate dashboard → Download data
+Research → Compare websites → Summarize findings
+📝 Form Filling Automation
+
+Automatically fills forms, submits data, and handles workflows.
+
+📊 Data Extraction
+
+Extract:
+
+Product info
+Job listings
+Prices
+Tables
+Research data
+📋 Execution Logs + History
+
+Tracks each action taken by the agent with transparent logs.
+
+🏗️ Architecture
+AI Browser Agent
+│
+├── LLM Reasoning Engine
+├── Browser Control Layer
+├── Task Planning System
+├── Execution Memory
+├── Logging + History
+└── Streamlit UI
+🛠 Tech Stack
+Python
+Streamlit
+Gemini API
+Playwright
+Asyncio
+Logging
+Docker
+📂 Project Structure
+ai-browser-agent/
+│
+├── app/
+│   ├── agents/
+│   │   └── agent.py
+│   ├── core/
+│   │   └── config.py
+│   ├── services/
+│   │   └── tasks.py
+│   └── utils/
+│       └── utils.py
+│
+├── streamlit_app.py
+├── requirements.txt
+├── requirements_streamlit.txt
+├── Dockerfile
+├── README.md
+└── .env.example
+⚡ Installation
+1️⃣ Clone Repo
+git clone https://github.com/shivamrustagi03/autonomous-browser-agent.git
+cd autonomous-browser-agent
+2️⃣ Create Virtual Environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
+Activate:
 
-3. Install dependencies:
-```bash
+Windows
+
+venv\Scripts\activate
+
+Mac/Linux
+
+source venv/bin/activate
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-playwright install chromium --with-deps
-```
+pip install -r requirements_streamlit.txt
+playwright install chromium
+4️⃣ Add Environment Variables
 
-4. Configure environment variables:
-```bash
-cp .env.example .env
-```
+Create .env
 
-Edit `.env` and add your Gemini API key:
-```
 GEMINI_API_KEY=your_api_key_here
 GEMINI_MODEL=gemini-pro
-```
+▶️ Run Project
+Streamlit UI (Recommended)
+streamlit run streamlit_app.py
 
-## Usage
+Then open:
 
-### Command Line Interface
+http://localhost:8501
+CLI Mode
+python -m app.main "Find top 5 AI jobs in Hyderabad"
+💡 Example Tasks
+Job Search
+Find top 5 AI jobs in Hyderabad on LinkedIn
+Web Scraping
+Go to quotes.toscrape.com and extract first 5 quotes
+Research
+Research top 3 Python web scraping libraries and compare them
+Form Filling
+Fill registration form on website using sample details
+📸 Screenshots
+Home UI
 
-Run a custom task:
-```bash
-python -m app.main "Search Google for 'Python web scraping' and tell me the top 3 results"
-```
+Running Task
 
-Run a predefined example:
-```bash
-python -m app.main --example search
-python -m app.main --example form
-python -m app.main --example extract
-python -m app.main --example research
-```
+Final Results
 
-With verbose logging:
-```bash
-python -m app.main --example search --verbose
-```
-
-With detailed summary:
-```bash
-python -m app.main --example search --summary
-```
-
-### Programmatic Usage
-
-```python
-import asyncio
-from app.agent import BrowserAgent
-from app.tasks import TaskTemplates
-
-async def main():
-    agent = BrowserAgent()
-    
-    task = TaskTemplates.basic_search("Python web frameworks", top_n=5)
-    await agent.execute(task)
-
-if __name__ == "__main__":
-    asyncio.run(main())
-```
-
-### Task Templates
-
-Use predefined templates for common scenarios:
-
-```python
-from app.tasks import TaskTemplates
-
-# Basic search
-task = TaskTemplates.basic_search("query", top_n=3)
-
-# Form filling
-task = TaskTemplates.form_filling(
-    url="https://example.com/form",
-    fields={"name": "John", "email": "john@example.com"}
-)
-
-# Data extraction
-task = TaskTemplates.data_extraction(
-    url="https://example.com/data",
-    extraction_instructions="Extract product names and prices"
-)
-
-# Multi-step research
-task = TaskTemplates.multi_step_research(
-    search_query="Python async frameworks",
-    research_goals="Compare top 3 frameworks"
-)
-```
-
-## Docker Usage
-
-### Build the image:
-```bash
+🐳 Docker Support
+Build Image
 docker build -t ai-browser-agent .
-```
+Run
+docker run --rm --env-file .env ai-browser-agent
+🎯 Why This Project Matters
 
-### Run the container:
-```bash
-docker run --rm \
-  --env-file .env \
-  ai-browser-agent \
-  python -m app.main --example search
-```
+This project demonstrates production-level skills in:
 
-### Interactive mode:
-```bash
-docker run -it --rm \
-  --env-file .env \
-  ai-browser-agent \
-  python -m app.main "Your task here"
-```
+✅ Agentic AI
+✅ LLM Integration
+✅ Autonomous Systems
+✅ Python Engineering
+✅ Browser Automation
+✅ UI Development
+✅ Real-world Problem Solving
 
-## Example CLI Usage
+📈 Resume Impact
 
-```bash
-# Basic search task
-python -m app.main "Find the latest news about AI"
+Built AI Browser Agent with Streamlit UI enabling autonomous multi-step web task execution using LLM reasoning and browser automation.
 
-# Form submission
-python -m app.main "Go to https://httpbin.org/forms/post and fill out the form with name=John, email=john@example.com, then submit"
+🔮 Future Improvements
+Multi-agent collaboration
+Memory-enabled tasks
+CAPTCHA solving
+Voice commands
+Scheduled automation
+Browser screenshot previews
+Cloud deployment
+👨‍💻 Author
 
-# Data extraction
-python -m app.main "Extract all product names and prices from https://example.com/products"
+Shivam Rustagi
 
-# Multi-step research
-python -m app.main "Research the top 3 Python web frameworks, visit each official site, and compare their features"
-```
+GitHub: https://github.com/shivamrustagi03
+LinkedIn: https://www.linkedin.com/in/shivamrustagi03/
+⭐ If You Like This Project
 
-## Configuration
-
-Configuration is managed through environment variables:
-
-- `GEMINI_API_KEY`: Your Gemini API key (required)
-- `GEMINI_MODEL`: Model to use (default: `gemini-pro`)
-
-## Project Structure
-
-```
-ai-browser-agent/
-├── app/
-│   ├── __init__.py
-│   ├── main.py          # CLI entry point
-│   ├── agent.py         # Browser agent implementation
-│   ├── config.py        # Configuration management
-│   ├── tasks.py         # Task templates and examples
-│   └── utils.py         # Utility functions
-├── .env.example         # Environment template
-├── requirements.txt     # Python dependencies
-├── Dockerfile          # Docker configuration
-├── README.md           # This file
-└── .gitignore          # Git ignore rules
-```
-
-## License
-
-MIT License
+Give it a star and connect with me!
